@@ -9,10 +9,13 @@ public class Timer : MonoBehaviour
     private float timeRemaining;
     public bool timerIsRunning = false;
     private TextMeshProUGUI textMeshProUGUI;
+    public CardManager cardManager;
 
     private void Start()
     {
-        timeRemaining = maxTimer;
+        //timeRemaining = maxTimer;
+        timeRemaining = 0;
+        timerIsRunning = true;
         textMeshProUGUI = GetComponent<TextMeshProUGUI>();
     }
 
@@ -28,6 +31,8 @@ public class Timer : MonoBehaviour
             {
                 timerIsRunning = false;              
                 GameManager.destinityPhase = true;
+                Debug.Log("Destiny Phase: On");
+                cardManager.showRandomCards();
             }            
          
             if (GameManager.destinityChosen)
