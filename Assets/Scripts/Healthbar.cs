@@ -21,7 +21,7 @@ public class Healthbar : MonoBehaviour
 
     }
 
-    void setHealth(float health)
+    public void setHealth(float health)
     {
         playerHealth = health;
     }
