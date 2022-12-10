@@ -14,12 +14,17 @@ public class PlayerDamage : MonoBehaviour
     {
         playerMaxHP = 10f;
         playerCurrentHP = playerMaxHP;
+        Healthbar.SetMaxHealth(playerMaxHP);
+        Healthbar.SetHealth(playerCurrentHP);
     }
 
    
     void Update()
     {
-        remainingInvulnerableTime -= Time.deltaTime;
+        if (remainingInvulnerableTime > 0)
+        {
+            remainingInvulnerableTime -= Time.deltaTime;
+        }        
         Debug.Log("remainingInvulnerable Time: " + remainingInvulnerableTime);
     }
 
@@ -35,6 +40,7 @@ public class PlayerDamage : MonoBehaviour
             GameManager.gameOver= true;
                         
             playerCurrentHP -= enemy.dmg;
+            Healthbar.SetHealth(playerCurrentHP);
             
             Debug.Log("Damage taken. Player Health = " + playerCurrentHP);
         }
@@ -43,6 +49,7 @@ public class PlayerDamage : MonoBehaviour
         {
             
             playerCurrentHP -= enemy.dmg;
+            Healthbar.SetHealth(playerCurrentHP);
             remainingInvulnerableTime = invulnerableTimer;
             Debug.Log("Damage taken. Player Health = " + playerCurrentHP);
 
