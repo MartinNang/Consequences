@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 public class Timer : MonoBehaviour
 {
-    public static float maxTimer = 30;
-    private static float timeRemaining = maxTimer;
-    public static bool timerIsRunning = false;
+    public float maxTimer = 30;
+    private float timeRemaining;
+    public bool timerIsRunning = false;
+    private TextMeshProUGUI textMeshProUGUI;
+
+    private void Start()
+    {
+        timeRemaining = maxTimer;
+        textMeshProUGUI = GetComponent<TextMeshProUGUI>();
+    }
 
     void Update()
     {
@@ -29,6 +38,7 @@ public class Timer : MonoBehaviour
 
             }
         }
+        textMeshProUGUI.text = timeRemaining.ToString("0");
     }
 
 }
