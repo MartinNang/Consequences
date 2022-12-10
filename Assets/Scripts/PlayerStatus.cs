@@ -7,11 +7,11 @@ public class PlayerStatus : MonoBehaviour
     
     public static bool hasMelee = false;
     public static bool hasLongRange = false;
-    public bool hasXAxis = true;
-    public bool hasYAxis = true;
-    public bool hasHPWeapon = false;
-    public bool hasTimerShield = false;
-    public bool hasDash = false;
+    public static bool hasXAxis = true;
+    public static bool hasYAxis = true;
+    public static bool hasHPWeapon = false;
+    public static bool hasTimerShield = false;
+    public static bool hasDash = false;
 
     // Start is called before the first frame update
     void Start()
