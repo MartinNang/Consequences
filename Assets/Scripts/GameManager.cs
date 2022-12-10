@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static int score = 0;
     public static bool destinityPhase = false;
     public static bool destinityChosen = false;
+    public static bool gameOver = false;
 
     // Start is called before the first frame update
     void Start()
