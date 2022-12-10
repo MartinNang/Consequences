@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,12 +10,12 @@ public class Card : MonoBehaviour
 
     public static CardEffect[] allPositiveCardEffects =
     {
-        new CardEffect(CardEffectType.POSITIVE, "Melee Boost", "",)
+        new CardEffect(CardEffectType.POSITIVE, "Melee Boost", "",);
     }
 
-    public static CardEffect[] allNegativeCardEffects =
-    {
-        new CardEffect(CardEffectType.NEGATIVE, "Melee Loss", "",)
+public static CardEffect[] allNegativeCardEffects =
+{
+        new CardEffect(CardEffectType.NEGATIVE, "Melee Loss", "",);
     }
 
     public Card (CardEffect positiveEffect, CardEffect negativeEffect)
@@ -126,4 +126,4 @@ public enum CardEffectType
 public enum CardEffectName
 {
 
-}
+}*/
