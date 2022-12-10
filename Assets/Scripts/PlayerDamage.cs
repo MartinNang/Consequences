@@ -35,7 +35,7 @@ public class PlayerDamage : MonoBehaviour
             GameManager.gameOver= true;
                         
             playerCurrentHP -= enemy.dmg;
-            
+            Healthbar.SetHealth(playerCurrentHP);
             Debug.Log("Damage taken. Player Health = " + playerCurrentHP);
         }
         else if
@@ -43,6 +43,7 @@ public class PlayerDamage : MonoBehaviour
         {
             
             playerCurrentHP -= enemy.dmg;
+            Healthbar.SetHealth(playerCurrentHP);
             remainingInvulnerableTime = invulnerableTimer;
             Debug.Log("Damage taken. Player Health = " + playerCurrentHP);
 
