@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float friction;
     public float hp;
     public GameObject player;
+    public float dmg;
     
     // Start is called before the first frame update
     void Start()
