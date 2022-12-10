@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour 
 {
-    public Slider healthBar;
+    public static Slider healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -20,12 +20,12 @@ public class Healthbar : MonoBehaviour
     {
     }
 
-    public void SetHealth(float hp)
+    public static void SetHealth(float hp)
     {
         healthBar.value = hp;
     }
 
-    public void SetMaxHealth(float hp)
+    public static void SetMaxHealth(float hp)
     {
         healthBar.maxValue = hp;
     }
