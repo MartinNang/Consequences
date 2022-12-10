@@ -25,7 +25,7 @@ public class PlayerDamage : MonoBehaviour
         {
             remainingInvulnerableTime -= Time.deltaTime;
         }        
-        Debug.Log("remainingInvulnerable Time: " + remainingInvulnerableTime);
+        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
