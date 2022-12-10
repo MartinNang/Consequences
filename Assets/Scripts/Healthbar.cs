@@ -12,7 +12,7 @@ public class Healthbar : MonoBehaviour
     {
         healthBar = GetComponent<Slider>();
         healthBar.maxValue = PlayerDamage.playerMaxHP;
-        healthBar.value = PlayerDamage.currentHP;
+        healthBar.value = PlayerDamage.playerCurrentHP;
     }
 
     // Update is called once per frame
