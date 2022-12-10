@@ -7,14 +7,14 @@ public class Bullet : MonoBehaviour
     public float bulletDamage;
     public int bulletHealth;
     
-    void Start()
+    void Awake()
     {
+        bulletHealth = 1;
         
-        //bulletDamage = transform.parent.gameObject.GetComponent<Firing>().damage;
-        Debug.Log("bulletDamage =" + bulletDamage);
+        
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -24,4 +24,23 @@ public class Bullet : MonoBehaviour
         this.bulletDamage = damage;
 
     }
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+
+        if (collision.gameObject.tag == "Enemy" && bulletHealth >= 1)
+        {
+            bulletHealth --;
+            Debug.Log("Bullet hit enemy!");
+
+            enemy.hp -= bulletDamage;
+
+            Destroy(this.gameObject);
+        }
+        
+
+
+    }
+
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
     
-    public bool hasMelee = false;
-    public bool hasLongRange = false;
+    public static bool hasMelee = false;
+    public static bool hasLongRange = false;
     public bool hasXAxis = true;
     public bool hasYAxis = true;
     public bool hasHPWeapon = false;

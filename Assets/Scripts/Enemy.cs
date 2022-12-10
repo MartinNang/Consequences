@@ -19,7 +19,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // TODO: Implement Collision Detection
+        if (hp <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void FixedUpdate()
@@ -37,19 +40,25 @@ public class Enemy : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.fixedDeltaTime);
     }
 
-    private void OnTriggerEnter2D (Collider2D collision)
+    /*private void OnCollisionEnter2D (Collision2D collision)
     {
         Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-        Debug.Log("Enemy Damage Taken, HP = " + hp);
+        
 
         if (collision.gameObject.tag == "Bullet" )
         {
             hp -= bullet.bulletDamage;
-            
+            Destroy(collision.gameObject);
+            Debug.Log("Enemy Damage Taken, HP = " + hp);
+
+            if (hp <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
         
 
     }
-
+    */
     
 }
