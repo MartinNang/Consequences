@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Healthbar : MonoBehaviour
+public class Healthbar
 {
-    public GameObject player;
-    private float playerHealth;
+    public static float playerHealth = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +18,5 @@ public class Healthbar : MonoBehaviour
     {
         //render health bar
 
-    }
-
-    public void setHealth(float health)
-    {
-        playerHealth = health;
     }
 }
