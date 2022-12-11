@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         if (gamePaused)
         {
-            Time.timeScale = 1
+            Time.timeScale = 1;
             gamePaused = false;            
         }
     }
