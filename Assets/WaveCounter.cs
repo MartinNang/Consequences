@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WaveCounter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private TextMeshProUGUI textMeshProUGUI;
+    private void Start()
     {
         
+        textMeshProUGUI = GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        textMeshProUGUI.text = "Wave " + GameManager.wave.ToString();
     }
+
 }
+

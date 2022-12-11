@@ -30,6 +30,10 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject);
         }
         moveTowardsPlayer();
+        if(GameManager.destinityPhase)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void FixedUpdate()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static int wave = 0;
+    public static int wave = 1;
     // public bool gameStarted = false;
     private static bool gamePaused = false;
     public static int score = 0;
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         if (gamePaused)
         {
             Time.timeScale = 1;
-            gamePaused = false;            
+            gamePaused = false;
         }
     }
     public void EndDestinyPhase()
