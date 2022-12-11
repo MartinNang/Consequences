@@ -11,11 +11,20 @@ public class Movement : MonoBehaviour
     public static Transform t;
     public float fixedRotation;
 
+    //for Dashing
+    private float activeMoveSpeed;
+    public float dashSpeed;
+
+    public float dashLength = 5f, dashCooldown = 1f;
+    private float dashCounter;
+    private float dashCoolCounter;
+
     private void Start()
     {
         
         t = transform;
         fixedRotation = t.rotation.z;
+        activeMoveSpeed = moveSpeed;
     }
 
     void Update()
@@ -31,11 +40,35 @@ public class Movement : MonoBehaviour
         position.y = Mathf.Clamp(position.y, -6.2f, 6.3f);
         transform.position = position;
 
+        
+
     }
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * activeMoveSpeed * Time.deltaTime);
+
+        if (Input.GetButtonDown("Dash"))
+        {
+            if (dashCoolCounter <= 0 && dashCounter <= 0)
+            {
+                activeMoveSpeed = dashSpeed;
+                dashCounter = dashLength;
+            }
+        }
+        if (dashCounter > 0)
+        {
+            dashCounter -= Time.deltaTime;
+            if (dashCounter <= 0)
+            {
+                activeMoveSpeed = moveSpeed;
+                dashCoolCounter = dashCooldown;
+            }
+        }
+        if (dashCoolCounter > 0)
+        {
+            dashCoolCounter -= Time.deltaTime;
+        }
 
     }
 

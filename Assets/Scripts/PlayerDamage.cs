@@ -7,8 +7,9 @@ public class PlayerDamage : MonoBehaviour
     public static float playerMaxHP;
     public static float playerCurrentHP;
 
-    private float invulnerableTimer = 5;
+    public float invulnerableTimer = 5;
     private float remainingInvulnerableTime = 0;
+    public Animator animator;
        
     void Start()
     {
@@ -24,8 +25,9 @@ public class PlayerDamage : MonoBehaviour
         if (remainingInvulnerableTime > 0)
         {
             remainingInvulnerableTime -= Time.deltaTime;
-        }        
-        
+        }
+        animator.SetFloat("InvulnerableTimer", remainingInvulnerableTime);
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)

@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static int wave = 0;
     // public bool gameStarted = false;
-    private static bool gamePaused = false;
+    public static bool gamePaused = false;
     public static int score = 0;
     public static bool destinityPhase = false;
     public static bool destinityChosen = false;
@@ -24,21 +24,5 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void pauseGame()
-    {
-        if (!gamePaused)
-        {
-            Time.timeScale = 0;
-            gamePaused = true;
-        }
-    }
 
-    void unpauseGame()
-    {
-        if (gamePaused)
-        {
-            Time.timeScale = 1
-            gamePaused = false;            
-        }
-    }
 }

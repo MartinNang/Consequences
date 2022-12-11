@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
         Vector2 moveToPlayer = new Vector2(Mathf.Cos(angleToPlayer), Mathf.Sin(angleToPlayer));
         transform.position = moveToPlayer;
         rb.MovePosition(rb.position + moveToPlayer * speed * Time.fixedDeltaTime);*/
+        
         transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
 
     }
