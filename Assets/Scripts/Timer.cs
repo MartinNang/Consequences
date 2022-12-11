@@ -13,8 +13,7 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        //timeRemaining = maxTimer;
-        timeRemaining = 0;
+        timeRemaining = maxTimer;
         timerIsRunning = true;
         textMeshProUGUI = GetComponent<TextMeshProUGUI>();
     }

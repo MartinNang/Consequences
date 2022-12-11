@@ -41,4 +41,9 @@ public class GameManager : MonoBehaviour
             gamePaused = false;            
         }
     }
+    public void EndDestinyPhase()
+    {
+        Debug.Log("destinityPhase = false");
+        destinityPhase = false;
+    }
 }
