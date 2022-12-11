@@ -6,15 +6,14 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1;
     Vector2 movement;
-    Vector2 input;
+    Vector2 dashMovement;
     public Rigidbody2D rb;
     public float friction;
     public static Transform t;
     public float fixedRotation;
 
     //for Dashing
-    private float activeMoveSpeed;
-    public float dashSpeed;
+    [SerializeField] float dashSpeed = 5;
 
     public float dashLength = 5f, dashCooldown = 1f;
     private float dashCounter;
@@ -25,7 +24,6 @@ public class Movement : MonoBehaviour
         
         t = transform;
         fixedRotation = t.rotation.z;
-        activeMoveSpeed = moveSpeed;
     }
 
     void Update()
@@ -34,60 +32,52 @@ public class Movement : MonoBehaviour
         t.eulerAngles = new Vector3(t.eulerAngles.x, t.eulerAngles.y, fixedRotation);
         
         Vector2 position = new Vector2(transform.position.x, transform.position.y);
-        input.x = Input.GetAxisRaw("Horizontal");
-        input.y = Input.GetAxisRaw("Vertical");
-        movement.x = 0;
-        movement.y = 0;
-        if(PlayerStatus.hasXAxis)
-        {
-            movement.x = input.x;
-        }
-        if(PlayerStatus.hasYAxis)
-        {
-            movement.y = input.y;
-        }
+
+        if (PlayerStatus.hasXAxis) movement.x = Input.GetAxisRaw("Horizontal");
+        else movement.x = 0;
+
+        if (PlayerStatus.hasYAxis) movement.y = Input.GetAxisRaw("Vertical");
+        else movement.y = 0;
+
         //Borders for movement
         position.x = Mathf.Clamp(position.x, -12.3f, 12.3f);
         position.y = Mathf.Clamp(position.y, -6.2f, 6.3f);
         transform.position = position;
 
-        if (Input.GetButtonDown("Dash"))
-        {
-            if (dashCoolCounter <= 0 && dashCounter <= 0)
-            {
-                
-                dashCounter = dashLength;
-            }
-        }
-        if (dashCounter > 0)
-        {
-            dashCounter -= Time.deltaTime;
-            if (dashCounter <= 0)
-            {
-                activeMoveSpeed = moveSpeed;
-                dashCoolCounter = dashCooldown;
-            }
-        }
-        if (dashCoolCounter > 0)
-        {
-            dashCoolCounter -= Time.deltaTime;
-        }
-        if (PlayerStatus.hasDash)
-        {
-            rb.MovePosition(rb.position + (movement * moveSpeed + input * dashSpeed) * Time.deltaTime);
-        }
-        else
-        {
-            rb.MovePosition(rb.position + (movement * moveSpeed) * Time.deltaTime);
-        }
+        
+        
     }
 
     private void FixedUpdate()
     {
-        
+        if (PlayerStatus.hasDash)
+        {
+            dashMovement.x = Input.GetAxisRaw("Horizontal");
+            dashMovement.y = Input.GetAxisRaw("Vertical");            
 
-        
-
+            if (Input.GetButtonDown("Dash"))
+            {
+                if (dashCoolCounter <= 0 && dashCounter <= 0)
+                {
+                    dashCounter = dashLength;
+                }
+            }
+            if (dashCounter > 0)
+            {
+                // rb.MovePosition(rb.position + dashMovement * dashSpeed * Time.deltaTime);
+                rb.velocity = dashMovement * dashSpeed;
+                dashCounter -= Time.deltaTime;
+                if (dashCounter <= 0)
+                {
+                    dashCoolCounter = dashCooldown;
+                }
+            }
+            if (dashCoolCounter > 0)
+            {
+                dashCoolCounter -= Time.deltaTime;
+            }
+        }
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
     }
 
 
