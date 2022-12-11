@@ -2084,11 +2084,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1348134fb6cc3448920755316151c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 40
+  moveSpeed: 5
   rb: {fileID: 1301911785}
   friction: 0
   fixedRotation: 5
-  dashSpeed: 120
+  dashSpeed: 248.4
   dashLength: 0.2
   dashCooldown: 1
 --- !u!114 &1301911787
@@ -2238,6 +2238,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683f5e293d2a6394b9f0963e9ee63eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 0}
+  card1: {fileID: 37989207}
+  card2: {fileID: 295788885}
+  card3: {fileID: 2105393551}
+  card1TopIcon: {fileID: 427751051}
+  card2TopIcon: {fileID: 1225315642}
+  card3TopIcon: {fileID: 183543046}
+  card1BottomIcon: {fileID: 382750830}
+  card2BottomIcon: {fileID: 203621533}
+  card3BottomIcon: {fileID: 1253636809}
+  card1TopName: {fileID: 0}
+  card2TopName: {fileID: 0}
+  card3TopName: {fileID: 0}
+  card1BottomName: {fileID: 0}
+  card2BottomName: {fileID: 0}
+  card3BottomName: {fileID: 0}
 --- !u!4 &1376869380
 Transform:
   m_ObjectHideFlags: 0
@@ -2597,6 +2613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTimer: 30
   timerIsRunning: 0
+  cardManager: {fileID: 1376869379}
 --- !u!114 &1892159980
 MonoBehaviour:
   m_ObjectHideFlags: 0
