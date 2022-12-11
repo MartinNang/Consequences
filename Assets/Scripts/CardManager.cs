@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,7 +37,7 @@ public class CardManager : MonoBehaviour
     {
         for (int i = 0; i < cards.Length; i++)
         {
-            cards[i] = getRandomCard();         
+            cards[i] = getRandomCard();
         }
 
         // display UI card elements 
@@ -47,11 +47,12 @@ public class CardManager : MonoBehaviour
 
 
         // load top icons
-        card1TopIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>(cards[0].getPositiveCardEffect().getIconPath());
+        card1TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[0].getPositiveCardEffect().getIconPath());
+        Sprite card1TopSprite = card1TopIcon.GetComponent<Image>().sprite;
         card1TopIcon.SetActive(true);
-        card2TopIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>(cards[1].getPositiveCardEffect().getIconPath());
+        card2TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[1].getPositiveCardEffect().getIconPath());
         card2TopIcon.SetActive(true);
-        card3TopIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>(cards[2].getPositiveCardEffect().getIconPath());
+        card3TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[2].getPositiveCardEffect().getIconPath());
         card3TopIcon.SetActive(true);
 
         // load top names
@@ -60,15 +61,18 @@ public class CardManager : MonoBehaviour
         card3TopName.SetActive(true);*/
 
         // load bottom icons
-        /*card1BottomIcon.SetActive(true);
+        card1BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[0].getNegativeCardEffect().getIconPath());
+        card1BottomIcon.SetActive(true);
+        card2BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[1].getNegativeCardEffect().getIconPath());
         card2BottomIcon.SetActive(true);
-        card3BottomIcon.SetActive(true);*/
+        card3BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[2].getNegativeCardEffect().getIconPath());
+        card3BottomIcon.SetActive(true);
 
         // load bottom names
         /*card1BottomName.SetActive(true);
         card2BottomName.SetActive(true);
         card3BottomName.SetActive(true);*/
-    /*}
+    }
 
     public static Card getRandomCard()
     {
@@ -121,4 +125,4 @@ public class CardManager : MonoBehaviour
     {
 
     }
-}*/
+}

@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   friction: 0
-  hp: 10
+  hp: 2
   playerTransform: {fileID: 0}
   rb: {fileID: 2074078471657886218}
   dmg: 1

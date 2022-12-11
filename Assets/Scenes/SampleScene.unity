@@ -896,7 +896,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 217.54, y: 153}
+  m_AnchoredPosition: {x: 428, y: 214.18}
   m_SizeDelta: {x: 235.0839, y: 34.3606}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &396187059
@@ -1070,7 +1070,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1852190710, guid: 7e31f62c1e51bfa4b9f5e9eddcd86d9b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2233,6 +2233,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683f5e293d2a6394b9f0963e9ee63eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 0}
+  card1: {fileID: 37989207}
+  card2: {fileID: 295788885}
+  card3: {fileID: 2105393551}
+  card1TopIcon: {fileID: 427751051}
+  card2TopIcon: {fileID: 1225315642}
+  card3TopIcon: {fileID: 183543046}
+  card1BottomIcon: {fileID: 382750830}
+  card2BottomIcon: {fileID: 203621533}
+  card3BottomIcon: {fileID: 1253636809}
+  card1TopName: {fileID: 0}
+  card2TopName: {fileID: 0}
+  card3TopName: {fileID: 0}
+  card1BottomName: {fileID: 0}
+  card2BottomName: {fileID: 0}
+  card3BottomName: {fileID: 0}
 --- !u!4 &1376869380
 Transform:
   m_ObjectHideFlags: 0
@@ -2592,6 +2608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTimer: 30
   timerIsRunning: 0
+  cardManager: {fileID: 1376869379}
 --- !u!114 &1892159980
 MonoBehaviour:
   m_ObjectHideFlags: 0
