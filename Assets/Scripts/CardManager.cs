@@ -19,8 +19,6 @@ public class CardManager : MonoBehaviour
 
     public GameObject card1BottomName, card2BottomName, card3BottomName;
 
-    private Card card1, card2, card3;
-
     void Start()
     {
     }
@@ -33,18 +31,16 @@ public class CardManager : MonoBehaviour
         }
 
         // display UI card elements 
-        card1GameObject.SetActive(true);
-        card2GameObject.SetActive(true);
-        card3GameObject.SetActive(true);
+        showCards();
 
         // load top icons
-        card1TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(card1.getPositiveCardEffect().getIconPath());
+        card1TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[0].getPositiveCardEffect().getIconPath());
         Sprite card1TopSprite = card1TopIcon.GetComponent<Image>().sprite;
-        card1TopIcon.SetActive(true);
-        card2TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(card2.getPositiveCardEffect().getIconPath());
-        card2TopIcon.SetActive(true);
-        card3TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(card3.getPositiveCardEffect().getIconPath());
-        card3TopIcon.SetActive(true);
+        // card1TopIcon.SetActive(true);
+        card2TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[1].getPositiveCardEffect().getIconPath());
+        // card2TopIcon.SetActive(true);
+        card3TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[2].getPositiveCardEffect().getIconPath());
+        // card3TopIcon.SetActive(true);
 
         // load top names
         /*card1TopName.SetActive(true);
@@ -52,12 +48,12 @@ public class CardManager : MonoBehaviour
         card3TopName.SetActive(true);*/
 
         // load bottom icons
-        card1BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(card1.getNegativeCardEffect().getIconPath());
-        card1BottomIcon.SetActive(true);
-        card2BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(card2.getNegativeCardEffect().getIconPath());
-        card2BottomIcon.SetActive(true);
-        card3BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(card3.getNegativeCardEffect().getIconPath());
-        card3BottomIcon.SetActive(true);
+        card1BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[0].getNegativeCardEffect().getIconPath());
+        // card1BottomIcon.SetActive(true);
+        card2BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[1].getNegativeCardEffect().getIconPath());
+        // card2BottomIcon.SetActive(true);
+        card3BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[2].getNegativeCardEffect().getIconPath());
+        // card3BottomIcon.SetActive(true);
 
         // load bottom names
         /*card1BottomName.SetActive(true);
@@ -120,7 +116,7 @@ public class CardManager : MonoBehaviour
 
     }
 
-    void SelectCard(int cardIndex)
+    public void SelectCard(int cardIndex)
     {
         Card selectedCard = cards[cardIndex];
         switch (selectedCard.getPositiveCardEffect().getName())
@@ -159,7 +155,21 @@ public class CardManager : MonoBehaviour
                 PlayerStatus.hasDash = false;
                 break;
         }
+        GameManager.destinityChosen = true;
+        hideCards();
+    }
 
+    private void showCards()
+    {
+        card1GameObject.SetActive(true);
+        card2GameObject.SetActive(true);
+        card3GameObject.SetActive(true);
+    }
+    private void hideCards()
+    {
+        card1GameObject.SetActive(false);
+        card2GameObject.SetActive(false);
+        card3GameObject.SetActive(false);
     }
 }
 
