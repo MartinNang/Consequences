@@ -7,7 +7,7 @@ public class PlayerStatus : MonoBehaviour
     
     public static bool hasMelee = true;
     public static bool hasLongRange = false;
-    public static bool hasXAxis = false;
+    public static bool hasXAxis = true;
     public static bool hasYAxis = true;
     public static bool hasHPWeapon = false;
     public static bool hasTimerShield = false;

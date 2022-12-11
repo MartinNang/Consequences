@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDamage : MonoBehaviour
 {
     public static float playerMaxHP;
+    public static float playerMaxHPIncrease;
     public static float playerCurrentHP;
 
     public float invulnerableTimer = 5;
@@ -35,8 +36,12 @@ public class PlayerDamage : MonoBehaviour
         
 
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
+        }
         
+
         if (collision.gameObject.tag == "Enemy" && playerCurrentHP <= 1 && remainingInvulnerableTime <=0)
         {
             GameManager.gameOver= true;
@@ -52,6 +57,7 @@ public class PlayerDamage : MonoBehaviour
             
             playerCurrentHP -= enemy.dmg;
             Healthbar.SetHealth(playerCurrentHP);
+            
             remainingInvulnerableTime = invulnerableTimer;
             Debug.Log("Damage taken. Player Health = " + playerCurrentHP);
 
