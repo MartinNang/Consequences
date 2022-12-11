@@ -744,7 +744,7 @@ Canvas:
   m_GameObject: {fileID: 322353493}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2084,12 +2084,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1348134fb6cc3448920755316151c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 40
+  moveSpeed: 2
   rb: {fileID: 1301911785}
   friction: 0
   fixedRotation: 5
-  dashSpeed: 120
-  dashLength: 0.2
+  dashSpeed: 30
+  dashLength: 0.15
   dashCooldown: 1
 --- !u!114 &1301911787
 MonoBehaviour:
@@ -2238,6 +2238,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683f5e293d2a6394b9f0963e9ee63eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 0}
+  card1: {fileID: 0}
+  card2: {fileID: 0}
+  card3: {fileID: 0}
+  card1TopIcon: {fileID: 0}
+  card2TopIcon: {fileID: 0}
+  card3TopIcon: {fileID: 0}
+  card1BottomIcon: {fileID: 0}
+  card2BottomIcon: {fileID: 0}
+  card3BottomIcon: {fileID: 0}
+  card1TopName: {fileID: 0}
+  card2TopName: {fileID: 0}
+  card3TopName: {fileID: 0}
+  card1BottomName: {fileID: 0}
+  card2BottomName: {fileID: 0}
+  card3BottomName: {fileID: 0}
 --- !u!4 &1376869380
 Transform:
   m_ObjectHideFlags: 0
@@ -2597,6 +2613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTimer: 30
   timerIsRunning: 0
+  cardManager: {fileID: 0}
 --- !u!114 &1892159980
 MonoBehaviour:
   m_ObjectHideFlags: 0
