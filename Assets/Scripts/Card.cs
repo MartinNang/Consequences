@@ -12,22 +12,22 @@ public class Card : MonoBehaviour
     public static CardEffect[] allPositiveCardEffects =
     {
         new CardEffect(CardEffectType.POSITIVE, "Max HP+", "Permanently adds Max HP to your Healthbar.", "Icons/HP"),
-        new CardEffect(CardEffectType.POSITIVE, "Melee", "Gain the ability to engage in close combat.", "Icons/Melee"),
+        // new CardEffect(CardEffectType.POSITIVE, "Melee", "Gain the ability to engage in close combat.", "Icons/Melee"),
         new CardEffect(CardEffectType.POSITIVE, "Long Range", "Gain the abilty to fire at enemies.", "Icons/LongRange"),
         new CardEffect(CardEffectType.POSITIVE, "x-Axis", "Gain the ability to move horizontally.", "Icons/XAxis"),
         new CardEffect(CardEffectType.POSITIVE, "y-Axis", "Gain the ability to move vertically.", "Icons/YAxis"),
-        new CardEffect(CardEffectType.POSITIVE, "HP-Regeneration", "Heal HP Damage per second.", "Icons/HP"),
+        // new CardEffect(CardEffectType.POSITIVE, "HP-Regeneration", "Heal HP Damage per second.", "Icons/HP"),
         new CardEffect(CardEffectType.POSITIVE, "Dash", "Gain the ability to dash.", "Icons/Dash")
     };
 
     public static CardEffect[] allNegativeCardEffects =
     {
         new CardEffect(CardEffectType.NEGATIVE, "Max HP-", "Permanently subtracts Max HP to your Healthbar.", "Icons/HP"),
-        new CardEffect(CardEffectType.NEGATIVE, "Melee", "Lose the ability to engage in close combat.", "Icons/Melee"),
+        // new CardEffect(CardEffectType.NEGATIVE, "Melee", "Lose the ability to engage in close combat.", "Icons/Melee"),
         new CardEffect(CardEffectType.NEGATIVE, "Long Range", "Lose the abilty to fire at enemies.", "Icons/LongRange"),
         new CardEffect(CardEffectType.NEGATIVE, "x-Axis", "Lose the ability to move horizontally.", "Icons/XAxis"),
         new CardEffect(CardEffectType.NEGATIVE, "y-Axis", "Lose the ability to move vertically.", "Icons/YAxis"),
-        new CardEffect(CardEffectType.NEGATIVE, "HP-Degeneration", "Take HP Damage per second.", "Icons/HP"),
+        // new CardEffect(CardEffectType.NEGATIVE, "HP-Degeneration", "Take HP Damage per second.", "Icons/HP"),
         new CardEffect(CardEffectType.NEGATIVE, "Dash", "Lose the ability to dash.", "Icons/Dash")
     };
 

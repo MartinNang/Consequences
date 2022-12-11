@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,30 +36,23 @@ public class CardManager : MonoBehaviour
 
         // load top icons
         card1TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[0].getPositiveCardEffect().getIconPath());
-        Sprite card1TopSprite = card1TopIcon.GetComponent<Image>().sprite;
-        // card1TopIcon.SetActive(true);
         card2TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[1].getPositiveCardEffect().getIconPath());
-        // card2TopIcon.SetActive(true);
         card3TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[2].getPositiveCardEffect().getIconPath());
-        // card3TopIcon.SetActive(true);
 
         // load top names
-        /*card1TopName.SetActive(true);
-        card2TopName.SetActive(true);
-        card3TopName.SetActive(true);*/
+        card1TopName.GetComponent<TextMeshProUGUI>().text = cards[0].getPositiveCardEffect().getName();
+        card2TopName.GetComponent<TextMeshProUGUI>().text = cards[1].getPositiveCardEffect().getName();
+        card3TopName.GetComponent<TextMeshProUGUI>().text = cards[2].getPositiveCardEffect().getName();
 
         // load bottom icons
         card1BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[0].getNegativeCardEffect().getIconPath());
-        // card1BottomIcon.SetActive(true);
         card2BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[1].getNegativeCardEffect().getIconPath());
-        // card2BottomIcon.SetActive(true);
         card3BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[2].getNegativeCardEffect().getIconPath());
-        // card3BottomIcon.SetActive(true);
 
         // load bottom names
-        /*card1BottomName.SetActive(true);
-        card2BottomName.SetActive(true);
-        card3BottomName.SetActive(true);*/
+        card1BottomName.GetComponent<TextMeshProUGUI>().text = cards[0].getNegativeCardEffect().getName();
+        card2BottomName.GetComponent<TextMeshProUGUI>().text = cards[1].getNegativeCardEffect().getName();
+        card3BottomName.GetComponent<TextMeshProUGUI>().text = cards[2].getNegativeCardEffect().getName();
     }
 
     public static Card getRandomCard()
