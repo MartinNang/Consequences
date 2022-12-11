@@ -5,9 +5,9 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    public float maxTimer = 30;
+    public float maxTimer;
     private float timeRemaining;
-    public bool timerIsRunning = false;
+    public bool timerIsRunning = true;
     private TextMeshProUGUI textMeshProUGUI;
     public CardManager cardManager;
 
@@ -24,10 +24,11 @@ public class Timer : MonoBehaviour
         {
             timeRemaining -= Time.deltaTime;
         }
-        else if (timeRemaining == 0)
+        else if (timeRemaining <= 0)
         {
             if (timerIsRunning)
             {
+                GameManager.pauseGame();
                 timerIsRunning = false;              
                 GameManager.destinityPhase = true;
                 Debug.Log("Destiny Phase: On");
@@ -36,7 +37,9 @@ public class Timer : MonoBehaviour
          
             if (GameManager.destinityChosen)
             {
+                GameManager.destinityChosen = false;
                 GameManager.wave++;
+                GameManager.unpauseGame();
                 timerIsRunning = true;
                 timeRemaining = maxTimer;
 

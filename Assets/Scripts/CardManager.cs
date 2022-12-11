@@ -9,25 +9,15 @@ public class CardManager : MonoBehaviour
     public GameObject cardPrefab;
 
     public static Card[] cards = new Card[3];
-    public GameObject card1;
-    public GameObject card2;
-    public GameObject card3;
+    public GameObject card1GameObject, card2GameObject, card3GameObject;
 
-    public GameObject card1TopIcon;
-    public GameObject card2TopIcon;
-    public GameObject card3TopIcon;
+    public GameObject card1TopIcon, card2TopIcon, card3TopIcon;
 
-    public GameObject card1BottomIcon;
-    public GameObject card2BottomIcon;    
-    public GameObject card3BottomIcon;
+    public GameObject card1BottomIcon, card2BottomIcon, card3BottomIcon;
 
-    public GameObject card1TopName;
-    public GameObject card2TopName;
-    public GameObject card3TopName;
+    public GameObject card1TopName, card2TopName, card3TopName;
 
-    public GameObject card1BottomName;
-    public GameObject card2BottomName;
-    public GameObject card3BottomName;
+    public GameObject card1BottomName, card2BottomName, card3BottomName;
 
     void Start()
     {
@@ -41,19 +31,16 @@ public class CardManager : MonoBehaviour
         }
 
         // display UI card elements 
-        card1.SetActive(true);
-        card2.SetActive(true);
-        card3.SetActive(true);
-
+        showCards();
 
         // load top icons
         card1TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[0].getPositiveCardEffect().getIconPath());
         Sprite card1TopSprite = card1TopIcon.GetComponent<Image>().sprite;
-        card1TopIcon.SetActive(true);
+        // card1TopIcon.SetActive(true);
         card2TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[1].getPositiveCardEffect().getIconPath());
-        card2TopIcon.SetActive(true);
+        // card2TopIcon.SetActive(true);
         card3TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[2].getPositiveCardEffect().getIconPath());
-        card3TopIcon.SetActive(true);
+        // card3TopIcon.SetActive(true);
 
         // load top names
         /*card1TopName.SetActive(true);
@@ -62,11 +49,11 @@ public class CardManager : MonoBehaviour
 
         // load bottom icons
         card1BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[0].getNegativeCardEffect().getIconPath());
-        card1BottomIcon.SetActive(true);
+        // card1BottomIcon.SetActive(true);
         card2BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[1].getNegativeCardEffect().getIconPath());
-        card2BottomIcon.SetActive(true);
+        // card2BottomIcon.SetActive(true);
         card3BottomIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[2].getNegativeCardEffect().getIconPath());
-        card3BottomIcon.SetActive(true);
+        // card3BottomIcon.SetActive(true);
 
         // load bottom names
         /*card1BottomName.SetActive(true);
@@ -106,6 +93,9 @@ public class CardManager : MonoBehaviour
                                                     || (cardEffect.getName().Equals("y-Axis") && !PlayerStatus.hasYAxis)
                                                     || (cardEffect.getName().Equals("Dash") && !PlayerStatus.hasDash)
                                                         );
+        validNegativeCardEffects.RemoveAll(cardEffect => (cardEffect.getName().Equals(randomValidPositiveCardEffect.getName()))
+                                                    || (cardEffect.getName().Equals("Max HP+") && randomValidPositiveCardEffect.getName().Equals("Max HP-"))
+                                                        );
 
         // randomly draw valid card effect
         index = random.Next(0, validNegativeCardEffects.Count);
@@ -121,5 +111,65 @@ public class CardManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    
+    void Update()
+    {
+
+    }
+
+    public void SelectCard(int cardIndex)
+    {
+        Card selectedCard = cards[cardIndex];
+        switch (selectedCard.getPositiveCardEffect().getName())
+        {
+            case "Max HP+":
+                PlayerDamage.playerMaxHP += PlayerDamage.playerMaxHPIncrease;
+                break;
+            case "Long Range":
+                PlayerStatus.hasLongRange = true;
+                break;
+            case "x-Axis":
+                PlayerStatus.hasXAxis = true;
+                break;
+            case "y-Axis":
+                PlayerStatus.hasYAxis = true;                
+                break;
+            case "Dash":
+                PlayerStatus.hasDash = true;
+                break;
+        }
+        switch (selectedCard.getNegativeCardEffect().getName())
+        {
+            case "Max HP-":
+                PlayerDamage.playerMaxHP -= PlayerDamage.playerMaxHPIncrease;
+                break;
+            case "Long Range":
+                PlayerStatus.hasLongRange = false;
+                break;
+            case "x-Axis":
+                PlayerStatus.hasXAxis = false;
+                break;
+            case "y-Axis":
+                PlayerStatus.hasYAxis = false;
+                break;
+            case "Dash":
+                PlayerStatus.hasDash = false;
+                break;
+        }
+        GameManager.destinityChosen = true;
+        hideCards();
+    }
+
+    private void showCards()
+    {
+        card1GameObject.SetActive(true);
+        card2GameObject.SetActive(true);
+        card3GameObject.SetActive(true);
+    }
+    private void hideCards()
+    {
+        card1GameObject.SetActive(false);
+        card2GameObject.SetActive(false);
+        card3GameObject.SetActive(false);
+    }
 }
+

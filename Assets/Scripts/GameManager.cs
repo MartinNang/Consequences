@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void pauseGame()
+    public static void pauseGame()
     {
         if (!gamePaused)
         {
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void unpauseGame()
+    public static void unpauseGame()
     {
         if (gamePaused)
         {
