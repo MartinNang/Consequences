@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
         t.eulerAngles = new Vector3(t.eulerAngles.x, t.eulerAngles.y, fixedRotation);
         if (hp <= 0)
         {
-            Destroy(this.gameObject);
+           Destroy(this.gameObject);
         }
         moveTowardsPlayer();
         if(GameManager.destinityPhase)

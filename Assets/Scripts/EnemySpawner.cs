@@ -6,15 +6,15 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyWalkerPrefab;
     //public GameObject enemyGunnerPrefab;
-    int amountOfWalkers;
-    int amountOfGunners;
+    /*int amountOfWalkers;
+    int amountOfGunners;*/
     private float remainingTime =0;
-    public float spawnTimer = 5;
+    public static float spawnTimer = 0.5f;
     string spawnSide;
     void Start()
     {
-        amountOfWalkers = 5;
-        amountOfGunners = 3;
+        /*amountOfWalkers = 5;
+        amountOfGunners = 3;*/
 
     }
 
@@ -73,11 +73,11 @@ public class EnemySpawner : MonoBehaviour
 
 
 
-    public void ChangeSpawnTimer(float waveTime)
+    /*public void ChangeSpawnTimer(float waveTime)
     {
         //
         spawnTimer = waveTime / amountOfWalkers;
-    }
+    }*/
 
 
 }

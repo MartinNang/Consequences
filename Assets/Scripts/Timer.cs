@@ -39,6 +39,8 @@ public class Timer : MonoBehaviour
             {
                 GameManager.destinityChosen = false;
                 GameManager.wave++;
+                EnemySpawner.spawnTimer *= 0.75f;
+                
                 GameManager.unpauseGame();
                 timerIsRunning = true;
                 timeRemaining = maxTimer;
