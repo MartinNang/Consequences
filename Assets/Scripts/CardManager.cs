@@ -150,6 +150,7 @@ public class CardManager : MonoBehaviour
                 break;
         }
         GameManager.destinityChosen = true;
+        GameManager.EndDestinyPhase();
         hideCards();
     }
 

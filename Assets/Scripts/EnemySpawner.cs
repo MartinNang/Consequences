@@ -21,13 +21,18 @@ public class EnemySpawner : MonoBehaviour
     
     void Update()
     {
-        remainingTime -= Time.deltaTime;
-
-        if(remainingTime <=0)
+        if (!GameManager.gamePaused)
         {
-            SpawnEnemy();
-            remainingTime = spawnTimer;
+            remainingTime -= Time.deltaTime;
+            float result = remainingTime - Time.deltaTime;
+
+            if (remainingTime <= 0)
+            {
+                SpawnEnemy();
+                remainingTime = spawnTimer;
+            }
         }
+        
     }
 
     void SpawnEnemy()
