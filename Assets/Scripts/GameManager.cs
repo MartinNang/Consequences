@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static int wave = 1;
     // public bool gameStarted = false;
-    private static bool gamePaused = false;
+    public static bool gamePaused = false;
     public static int score = 0;
     public static bool destinityPhase = false;
     public static bool destinityChosen = false;
