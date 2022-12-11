@@ -7,27 +7,34 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float friction;
     public float hp = 2;
-    public GameObject player;
+    public Transform playerTransform;
+    public Rigidbody2D rb;
     public float dmg;
-    
+
+    Transform t;
+    public float fixedRotation;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        t = transform;
+        fixedRotation = t.rotation.z;
     }
 
     // Update is called once per frame
     void Update()
     {
+        t.eulerAngles = new Vector3(t.eulerAngles.x, t.eulerAngles.y, fixedRotation);
         if (hp <= 0)
         {
             Destroy(this.gameObject);
         }
+        moveTowardsPlayer();
     }
 
     private void FixedUpdate()
     {
-        moveTowardsPlayer();
+        
     }
 
     void attackPlayer()
@@ -37,7 +44,18 @@ public class Enemy : MonoBehaviour
 
     void moveTowardsPlayer()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.fixedDeltaTime);
+        /*
+        float angleToPlayer = Mathf.Atan2(transform.position.y - playerTransform.position.y, transform.position.x - playerTransform.position.x);
+        Vector2 moveToPlayer = new Vector2(Mathf.Cos(angleToPlayer), Mathf.Sin(angleToPlayer));
+        transform.position = moveToPlayer;
+        rb.MovePosition(rb.position + moveToPlayer * speed * Time.fixedDeltaTime);*/
+        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
+
+    }
+
+    public void TakeDamage(float damage)
+    {
+        hp -= damage;
     }
 
     /*private void OnCollisionEnter2D (Collision2D collision)

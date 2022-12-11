@@ -24,12 +24,7 @@ public class Firing : MonoBehaviour
             fireCooldownRemaining = fireCooldown;
             Debug.Log("Fire pushed!");
         }
-        else if (Input.GetButton("Fire1") && fireCooldownRemaining <= 0 && PlayerStatus.hasMelee)
-        {
-            Punsh();
-            fireCooldownRemaining = fireCooldown;
-            Debug.Log("Fire pushed!");
-        }
+        
     }
 
     void Shoot()
@@ -39,8 +34,5 @@ public class Firing : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce * 1, ForceMode2D.Impulse);
     }
-    void Punsh()
-    {
-        
-    }
+    
 }

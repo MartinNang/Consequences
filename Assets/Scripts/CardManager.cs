@@ -60,15 +60,15 @@ public class CardManager : MonoBehaviour
         card3TopName.SetActive(true);*/
 
         // load bottom icons
-        card1BottomIcon.SetActive(true);
+        /*card1BottomIcon.SetActive(true);
         card2BottomIcon.SetActive(true);
-        card3BottomIcon.SetActive(true);
+        card3BottomIcon.SetActive(true);*/
 
         // load bottom names
         /*card1BottomName.SetActive(true);
         card2BottomName.SetActive(true);
         card3BottomName.SetActive(true);*/
-    }
+    /*}
 
     public static Card getRandomCard()
     {
