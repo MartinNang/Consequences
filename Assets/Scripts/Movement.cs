@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 1;
+    public float moveSpeed = 5;
     Vector2 movement;
     Vector2 dashMovement;
     public Rigidbody2D rb;

@@ -17,7 +17,7 @@ public class Card : MonoBehaviour
         new CardEffect(CardEffectType.POSITIVE, "x-Axis", "Gain the ability to move horizontally.", "Icons/XAxis"),
         new CardEffect(CardEffectType.POSITIVE, "y-Axis", "Gain the ability to move vertically.", "Icons/YAxis"),
         // new CardEffect(CardEffectType.POSITIVE, "HP-Regeneration", "Heal HP Damage per second.", "Icons/HP"),
-        new CardEffect(CardEffectType.POSITIVE, "Dash", "Gain the ability to dash.", "Icons/Dash")
+        new CardEffect(CardEffectType.POSITIVE, "Tempo+", "Increase speed by 25%", "Icons/Dash")
     };
 
     public static CardEffect[] allNegativeCardEffects =
@@ -28,7 +28,7 @@ public class Card : MonoBehaviour
         new CardEffect(CardEffectType.NEGATIVE, "x-Axis", "Lose the ability to move horizontally.", "Icons/XAxis"),
         new CardEffect(CardEffectType.NEGATIVE, "y-Axis", "Lose the ability to move vertically.", "Icons/YAxis"),
         // new CardEffect(CardEffectType.NEGATIVE, "HP-Degeneration", "Take HP Damage per second.", "Icons/HP"),
-        new CardEffect(CardEffectType.NEGATIVE, "Dash", "Lose the ability to dash.", "Icons/Dash")
+        new CardEffect(CardEffectType.NEGATIVE, "Tempo-", "Decrease speed by 25%", "Icons/Dash")
     };
 
     public Card (CardEffect positiveEffect, CardEffect negativeEffect)
@@ -43,7 +43,7 @@ public class Card : MonoBehaviour
         }
 
             this.positiveEffect = positiveEffect;
-            this.negativeEffect = negativeEffect;    
+            this.negativeEffect = negativeEffect;
     }
 
     // Start is called before the first frame update

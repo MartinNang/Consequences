@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerDamage : MonoBehaviour
 {
     public static float playerMaxHP;
-    public static float playerMaxHPIncrease;
+    public static float playerMaxHPIncrease = 2; // In-/Decrease in Max HP (per Destiny Card) 
     public static float playerCurrentHP;
+    public static float playerAbsoluteMaxHP; // super-duper maximum HP possible (w/ Destiny Cards)
 
     public float invulnerableTimer = 5;
     private float remainingInvulnerableTime = 0;

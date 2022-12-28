@@ -18,7 +18,7 @@ public class Firing : MonoBehaviour
             fireCooldownRemaining -= Time.deltaTime;
         }
 
-        if (Input.GetButton("Fire1") && fireCooldownRemaining <= 0 /*&& PlayerStatus.hasLongRange*/)
+        if (Input.GetButton("Fire1") && fireCooldownRemaining <= 0 && PlayerStatus.hasLongRange)
         {
             Shoot();
             fireCooldownRemaining = fireCooldown;

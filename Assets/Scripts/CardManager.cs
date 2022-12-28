@@ -7,21 +7,38 @@ using UnityEngine.UI;
 
 public class CardManager : MonoBehaviour
 {
-    public GameObject cardPrefab;
-
     public static Card[] cards = new Card[3];
-    public GameObject card1GameObject, card2GameObject, card3GameObject;
-
-    public GameObject card1TopIcon, card2TopIcon, card3TopIcon;
-
-    public GameObject card1BottomIcon, card2BottomIcon, card3BottomIcon;
-
-    public GameObject card1TopName, card2TopName, card3TopName;
-
-    public GameObject card1BottomName, card2BottomName, card3BottomName;
+    public GameObject cardsMenuUI, player;
+    private GameObject card1GameObject, card2GameObject, card3GameObject, 
+        card1TopIcon, card2TopIcon, card3TopIcon, 
+        card1BottomIcon, card2BottomIcon, card3BottomIcon,
+        card1TopName, card2TopName, card3TopName,
+        card1BottomName, card2BottomName, card3BottomName;
 
     void Start()
     {
+        // UI Card Menu
+        card1GameObject = cardsMenuUI.transform.Find("ui_card_1").gameObject;
+        card2GameObject = cardsMenuUI.transform.Find("ui_card_2").gameObject;
+        card3GameObject = cardsMenuUI.transform.Find("ui_card_3").gameObject;
+
+        // Card 1
+        card1TopIcon = card1GameObject.transform.Find("ui_card_1_icon_top").gameObject;
+        card1TopName = card1GameObject.transform.Find("ui_card_1_name_top").gameObject;
+        card1BottomIcon = card1GameObject.transform.Find("ui_card_1_icon_bottom").gameObject;
+        card1BottomName = card1GameObject.transform.Find("ui_card_1_name_bottom").gameObject;
+
+        // Card 2        
+        card2TopIcon = card2GameObject.transform.Find("ui_card_2_icon_top").gameObject;
+        card2TopName = card2GameObject.transform.Find("ui_card_2_name_top").gameObject;
+        card2BottomIcon = card2GameObject.transform.Find("ui_card_2_icon_bottom").gameObject;
+        card2BottomName = card2GameObject.transform.Find("ui_card_2_name_bottom").gameObject;
+
+        // Card 3
+        card3TopIcon = card3GameObject.transform.Find("ui_card_3_icon_top").gameObject;
+        card3TopName = card3GameObject.transform.Find("ui_card_3_name_top").gameObject;
+        card3BottomIcon = card3GameObject.transform.Find("ui_card_3_icon_bottom").gameObject;
+        card3BottomName = card3GameObject.transform.Find("ui_card_3_name_bottom").gameObject;
     }
 
     public void showRandomCards()
@@ -32,7 +49,7 @@ public class CardManager : MonoBehaviour
         }
 
         // display UI card elements 
-        showCards();
+        showCards();        
 
         // load top icons
         card1TopIcon.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(cards[0].getPositiveCardEffect().getIconPath());
@@ -68,11 +85,12 @@ public class CardManager : MonoBehaviour
                                                     || (cardEffect.getName().Equals("x-Axis") && PlayerStatus.hasXAxis)
                                                     || (cardEffect.getName().Equals("y-Axis") && PlayerStatus.hasYAxis)
                                                     || (cardEffect.getName().Equals("Dash") && PlayerStatus.hasDash)
+                                                    || (cardEffect.getName().Equals("Max HP+") && PlayerDamage.playerMaxHP >= PlayerDamage.playerAbsoluteMaxHP)
                                                         );
 
         // randomly draw valid card effect
         var random = new System.Random();
-        int index = random.Next(0, validPositiveCardEffects.Count);
+        int index = random.Next(0, validPositiveCardEffects.Count - 1);
         CardEffect randomValidPositiveCardEffect = validPositiveCardEffects[index];
 
         // get negative card effect
@@ -85,10 +103,12 @@ public class CardManager : MonoBehaviour
                                                     || (cardEffect.getName().Equals("Long Range") && !PlayerStatus.hasLongRange)
                                                     || (cardEffect.getName().Equals("x-Axis") && !PlayerStatus.hasXAxis)
                                                     || (cardEffect.getName().Equals("y-Axis") && !PlayerStatus.hasYAxis)
-                                                    || (cardEffect.getName().Equals("Dash") && !PlayerStatus.hasDash)
+                                                    || (cardEffect.getName().Equals("Dash") && !PlayerStatus.hasDash)                                                    
                                                         );
         validNegativeCardEffects.RemoveAll(cardEffect => (cardEffect.getName().Equals(randomValidPositiveCardEffect.getName()))
-                                                    || (cardEffect.getName().Equals("Max HP+") && randomValidPositiveCardEffect.getName().Equals("Max HP-"))
+                                                    || (cardEffect.getName().Equals("Max HP-") && randomValidPositiveCardEffect.getName().Equals("Max HP+"))
+                                                    || (cardEffect.getName().Equals("Max HP-") && PlayerDamage.playerCurrentHP - PlayerDamage.playerMaxHPIncrease <= 0)
+                                                    || (cardEffect.getName().Equals("Tempo-") && randomValidPositiveCardEffect.getName().Equals("Tempo+"))
                                                         );
 
         // randomly draw valid card effect
@@ -117,6 +137,7 @@ public class CardManager : MonoBehaviour
         {
             case "Max HP+":
                 PlayerDamage.playerMaxHP += PlayerDamage.playerMaxHPIncrease;
+                PlayerDamage.playerCurrentHP = PlayerDamage.playerMaxHP;
                 break;
             case "Long Range":
                 PlayerStatus.hasLongRange = true;
@@ -127,14 +148,16 @@ public class CardManager : MonoBehaviour
             case "y-Axis":
                 PlayerStatus.hasYAxis = true;                
                 break;
-            case "Dash":
-                PlayerStatus.hasDash = true;
+            case "Tempo+":
+                PlayerStatus.tempoLvl++;
+                player.GetComponent<Movement>().moveSpeed *= 1.25f;
                 break;
         }
         switch (selectedCard.getNegativeCardEffect().getName())
         {
             case "Max HP-":
                 PlayerDamage.playerMaxHP -= PlayerDamage.playerMaxHPIncrease;
+                if (PlayerDamage.playerCurrentHP > PlayerDamage.playerMaxHP) PlayerDamage.playerCurrentHP = PlayerDamage.playerMaxHP;
                 break;
             case "Long Range":
                 PlayerStatus.hasLongRange = false;
@@ -145,7 +168,7 @@ public class CardManager : MonoBehaviour
             case "y-Axis":
                 PlayerStatus.hasYAxis = false;
                 break;
-            case "Dash":
+            case "Tempo-":
                 PlayerStatus.hasDash = false;
                 break;
         }
